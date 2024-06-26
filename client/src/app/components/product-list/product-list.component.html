@@ -1,25 +1,21 @@
-<table class="table">
-    
-    <thead>
-        <tr class="table-dark">
-            <th></th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Units In Stock</th>
-        </tr>
-    </thead>
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
 
-    <tbody>
-        @for (product of products; track product.sku) {
-            <tr>
-                <td class="align-middle">
-                    <img src="{{ product.imageUrl }}" height="50" />
-                </td>
-                <td class="align-middle">{{ product.name }}</td>
-                <td class="align-middle">{{ product.unitPrice | currency:'USD' }}</td>
-                <td class="align-middle">{{ product.unitsInStock }}</td>
-            </tr>
-        }
-    </tbody>
+                <!-- loop over the collection of products -->
+                @for (product of products; track product.sku) {
+                    <div class="col-md-3">
+                        <div class="product-box">
+                            <img src="{{ product.imageUrl }}" alt="{{ product.name }}" class="img-responsive" />
+                            <h1>{{ product.name }}</h1>
+                            <div class="price">{{ product.unitPrice | currency:'USD' }}</div>
+                            <a href="#" class="primary-btn">Add to cart</a>
+                        </div>
+                    </div>
+                }
 
-</table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,8 +7,15 @@
                 @for (product of products; track product.sku) {
                     <div class="col-md-3">
                         <div class="product-box">
-                            <img src="{{ product.imageUrl }}" alt="{{ product.name }}" class="img-responsive" />
-                            <h1>{{ product.name }}</h1>
+
+                            <a routerLink="/products/{{ product.id }}">
+                                <img src="{{ product.imageUrl }}" alt="{{ product.name }}" class="img-responsive" />
+                            </a>
+
+                            <a routerLink="/products/{{ product.id }}">
+                                <h1>{{ product.name }}</h1>
+                            </a>
+
                             <div class="price">{{ product.unitPrice | currency:'USD' }}</div>
                             <a href="#" class="primary-btn">Add to cart</a>
                         </div>

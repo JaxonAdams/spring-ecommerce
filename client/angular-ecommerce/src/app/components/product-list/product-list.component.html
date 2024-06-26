@@ -1,3 +1,25 @@
-@for (product of products; track product.sku) {
-    <p>{{ product.name }}: {{ product.unitPrice | currency:'USD' }}</p>
-}
+<table class="table">
+    
+    <thead>
+        <tr class="table-dark">
+            <th></th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Units In Stock</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for (product of products; track product.sku) {
+            <tr>
+                <td class="align-middle">
+                    <img src="{{ product.imageUrl }}" height="50" />
+                </td>
+                <td class="align-middle">{{ product.name }}</td>
+                <td class="align-middle">{{ product.unitPrice | currency:'USD' }}</td>
+                <td class="align-middle">{{ product.unitsInStock }}</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

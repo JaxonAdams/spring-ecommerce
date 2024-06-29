@@ -56,7 +56,7 @@ export class CheckoutComponent {
       }),
     });
 
-    const startMonth: number = 1;
+    const startMonth: number = new Date().getMonth() + 1;
 
     this.checkoutFormService.getCreditCardMonths(startMonth).subscribe(data => {
       this.creditCardMonths = data;
@@ -69,17 +69,41 @@ export class CheckoutComponent {
   }
 
   submit() {
+
     console.log("Handling form submission!");
     console.log(this.checkoutFormGroup.get('customer')?.value);
+    
   }
 
   copyShippingAddressToBillingAddress(event: any) {
+    
     if (event.target.checked) {
       this.checkoutFormGroup.controls['billingAddress']
           .setValue(this.checkoutFormGroup.controls['shippingAddress'].value);
     } else {
       this.checkoutFormGroup.controls['billingAddress'].reset();
     }
+    
+  }
+
+  handleMonthsAndYears() {
+    
+    const creditCardFormGroup = this.checkoutFormGroup.get('creditCard');
+
+    const currentYear: number = new Date().getFullYear();
+    const selectedYear: number = Number(creditCardFormGroup?.value.expirationYear);
+
+    let startMonth: number;
+    if (selectedYear === currentYear) {
+      startMonth = new Date().getMonth() + 1;
+    } else {
+      startMonth = 1;
+    }
+
+    this.checkoutFormService.getCreditCardMonths(startMonth).subscribe(data => {
+      this.creditCardMonths = data;
+    });
+
   }
 
 }

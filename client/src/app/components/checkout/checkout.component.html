@@ -195,12 +195,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3 mt-2"><label>Expiration Month</label></div>
+                        <div class="col-md-3 mt-2"><label>Expiration Year</label></div>
                         <div class="col-md-8">
                             <div class="input-space">
-                                <select formControlName="expirationMonth">
-                                    @for (month of creditCardMonths; track month) {
-                                        <option>{{ month }}</option>
+                                <select formControlName="expirationYear" (change)="handleMonthsAndYears()">
+                                    @for (year of creditCardYears; track year) {
+                                        <option>{{ year }}</option>
                                     }
                                 </select>
                             </div>
@@ -208,12 +208,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3 mt-2"><label>Expiration Year</label></div>
+                        <div class="col-md-3 mt-2"><label>Expiration Month</label></div>
                         <div class="col-md-8">
                             <div class="input-space">
-                                <select formControlName="expirationYear">
-                                    @for (year of creditCardYears; track year) {
-                                        <option>{{ year }}</option>
+                                <select formControlName="expirationMonth">
+                                    @for (month of creditCardMonths; track month) {
+                                        <option>{{ month }}</option>
                                     }
                                 </select>
                             </div>
